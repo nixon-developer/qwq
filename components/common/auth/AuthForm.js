@@ -40,7 +40,8 @@ function AuthForm({ type }) {
 
     try {
       if (type === "register") {
-        const res = await fetch(`${DB_LOCAL_URL}/api/auth/register`, {
+        // const res = await fetch(`${DB_LOCAL_URL}/api/auth/register`, {
+          const res = await fetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
