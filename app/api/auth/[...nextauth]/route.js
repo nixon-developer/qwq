@@ -2,7 +2,6 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { compare } from 'bcryptjs';
 import connectToDB from '@/utils/db';
-import { NEXTAUTH_URL } from '@/utils/constants';
 import User from '@/models/auth/User';
 
 const handler = NextAuth({
@@ -33,7 +32,7 @@ const handler = NextAuth({
     }),
   ],
 
-  secret: `${NEXTAUTH_URL}`,
+  secret: process.env.NEXTAUTH_SECRET,
 
   callbacks: {
     async session({ session, token }) {
