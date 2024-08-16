@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { DB_LOCAL_URL } from './constants';
 
 const connectToDB = async () => {
   if (mongoose.connections[0].readyState) {
@@ -8,7 +9,7 @@ const connectToDB = async () => {
     const DB_OPTIONS = {
       dbName: process.env.DB_NAME_LOCAL,
     };
-    await mongoose.connect(process.env.DB_URL, DB_OPTIONS);
+    await mongoose.connect(`${DB_LOCAL_URL}`, DB_OPTIONS);
     console.log("MongoDB is connected successfully");
   } catch (error) {
     console.error(error);
